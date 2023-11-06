@@ -9,9 +9,11 @@ It also can keep this setup up-to-date by [handling GitHub webhooks](https://git
 The basic configuration could define following parameters:
 ```yaml
 compose_repo_service_name: 'service-abc'
-compose_repo_repo_url: 'https://github.com/example-org/service-abc'
-compose_repo_repo_branch: 'master'
+compose_repo_service_user: 'abc'
+compose_repo_url: 'https://github.com/example-org/service-abc'
+compose_repo_branch: 'master'
 compose_repo_webhook_secret: 'super-secret-webhook-secret'
+compose_repo_env_link_src: '{{ compose_repo_path }}/deploy.env'
 ```
 The Docker images used are controlled by env variables defined in the `docker-compose.yml` in the source repo.
 Optionally images can be monitored and auto-updated using [Watchtower](https://github.com/containrrr/watchtower).
