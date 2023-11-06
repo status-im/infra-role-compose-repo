@@ -8,4 +8,4 @@
     mode:  0755
   with_items:
     - '{{ compose_repo_service_path }}'
-    - '{{ compose_repo_repo_path }}'
+    - '{{ compose_repo_path }}'
