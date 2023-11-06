@@ -1,0 +1,11 @@
+---
+- name: Create service directories
+  file:
+    path:  '{{ item }}'
+    owner: '{{ compose_repo_service_user }}'
+    group: 'docker'
+    state: 'directory'
+    mode:  0755
+  with_items:
+    - '{{ compose_repo_service_path }}'
+    - '{{ compose_repo_repo_path }}'

@@ -1,0 +1,19 @@
+---
+compose_repo_service_name: 'compose-repo'
+compose_repo_service_path: '/docker/{{ compose_repo_service_name }}'
+compose_repo_service_user: 'comprepo'
+
+# Simulator repository
+#compose_repo_url: 'https://github.com/example-org/some-service'
+compose_repo_path: '{{ compose_repo_service_path }}/repo'
+compose_repo_branch: 'master'
+compose_repo_env_link_src: '{{ compose_repo_path }}/custom.env'
+
+# Webhook service
+compose_repo_webhook_service_name: '{{ compose_repo_service_name }}-webhook'
+compose_repo_webhook_port: 6060
+#compose_repo_webhook_secret: ~
+
+# Docker Compose service
+compose_repo_compose_service_name:  '{{ compose_repo_service_name }}-compose'
+compose_repo_compose_service_user:  '{{ compose_repo_service_user }}'

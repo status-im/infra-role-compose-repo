@@ -1,0 +1,20 @@
+---
+- name: Create .env symlink to custom env
+  file:
+    src:   '{{ compose_repo_env_link_src }}'
+    dest:  '{{ compose_repo_path }}/.env'
+    state: 'link'
+
+- name: Create systemd Unit file
+  template:
+    src: 'compose.service.j2'
+    dest: '/etc/systemd/system/{{ compose_repo_compose_service_name }}.service'
+    mode: 0644
+  register: compose_service_def
+
+- name: Reload and restart the service
+  systemd:
+    name: '{{ compose_repo_compose_service_name }}.service'
+    enabled: true
+    daemon_reload: true
+    state: '{{ compose_service_def.changed | ternary("restarted", "started") }}'

@@ -1,0 +1,15 @@
+---
+- name: Create Consul service
+  include_role: name=consul-service
+  vars:
+    consul_config_name: '{{ compose_repo_service_name }}'
+    consul_services:
+      - id:   '{{ compose_repo_service_name }}-compose'
+        name: '{{ compose_repo_service_name }}-compose'
+        tags: ['compose', 'docker']
+        checks:
+          - id: '{{ compose_repo_service_name }}-compose-health'
+            name: 'Docker Compose Healthcheck'
+            type: 'script'
+            script: |
+              /usr/bin/systemctl is-active {{ compose_repo_compose_service_name }}
