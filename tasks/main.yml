@@ -1,5 +1,5 @@
 ---
 - include_tasks: config.yml
-- include_tasks: service.yml
 - include_tasks: webhook.yml
+- include_tasks: service.yml
 - include_tasks: consul.yml
