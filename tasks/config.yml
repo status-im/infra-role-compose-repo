@@ -1,4 +1,8 @@
 ---
+- name: Create service user
+  user:
+    name: '{{ compose_repo_service_user }}'
+
 - name: Create service directories
   file:
     path:  '{{ item }}'
