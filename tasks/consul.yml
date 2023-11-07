@@ -11,5 +11,5 @@
           - id: '{{ compose_repo_service_name }}-compose-health'
             name: 'Docker Compose Healthcheck'
             type: 'script'
-            script: |
+            script: |-
               /usr/bin/systemctl is-active {{ compose_repo_compose_service_name }}
