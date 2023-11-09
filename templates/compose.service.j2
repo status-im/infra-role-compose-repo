@@ -9,6 +9,8 @@ After=docker.service
 User={{ compose_repo_compose_service_user }}
 Group=docker
 WorkingDirectory={{ compose_repo_path }}
+SyslogFacility=local6
+SyslogLevel=debug
 ExecStart=/usr/local/bin/docker-compose --file {{ compose_repo_compose_file_path }} up
 Restart=on-failure
 Environment=COMPOSE_PROJECT_NAME={{ compose_repo_service_name }}
