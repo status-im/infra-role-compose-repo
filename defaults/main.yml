@@ -7,7 +7,7 @@ compose_repo_service_user: 'comprepo'
 #compose_repo_url: 'https://github.com/example-org/some-service'
 compose_repo_path: '{{ compose_repo_service_path }}/repo'
 compose_repo_branch: 'master'
-compose_repo_env_link_src: '{{ compose_repo_path }}/wakusim.env'
+#compose_repo_env_link_src: '{{ compose_repo_path }}/example.env'
 
 # Webhook service
 compose_repo_webhook_service_name: '{{ compose_repo_service_name }}-webhook'

@@ -1,5 +1,6 @@
 ---
 - name: Create .env symlink to custom env
+  when: compose_repo_env_link_src is defined
   file:
     src:   '{{ compose_repo_env_link_src }}'
     dest:  '{{ compose_repo_path }}/.env'
