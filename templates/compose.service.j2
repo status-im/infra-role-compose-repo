@@ -16,6 +16,9 @@ ExecStart=/usr/local/bin/docker-compose --file {{ compose_repo_compose_file_path
 ExecStopPost=/usr/local/bin/docker-compose --file {{ compose_repo_compose_file_path }} down
 Restart=on-failure
 Environment=COMPOSE_PROJECT_NAME={{ compose_repo_service_name }}
+{% for key,value in compose_repo_service_env_vars.items() %}
+Environment={{ key }}={{ value }}
+{% endfor %}
 
 [Install]
 WantedBy=multi-user.target

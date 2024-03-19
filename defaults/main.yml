@@ -2,6 +2,7 @@
 compose_repo_service_name: 'compose-repo'
 compose_repo_service_path: '/docker/{{ compose_repo_service_name }}'
 compose_repo_service_user: 'comprepo'
+compose_repo_service_env_vars: {}
 
 # Simulator repository
 #compose_repo_url: 'https://github.com/example-org/some-service'
