@@ -21,6 +21,12 @@ To do that the `com.centurylinklabs.watchtower.enable` __label__ needs to be set
 
 The rest of the configuration comes from `.env` file which is symlinked by default to `custom.env` from the repo.
 
+Additional parameter can be added to the docker-compose launch command, example:
+
+```yaml
+compose_repo_compose_additional_params: --compatibility
+```
+
 # Management
 
 The setup consists of two services:

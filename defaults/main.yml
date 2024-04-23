@@ -19,3 +19,4 @@ compose_repo_webhook_port: 6060
 compose_repo_compose_service_name:  '{{ compose_repo_service_name }}-compose'
 compose_repo_compose_service_user:  '{{ compose_repo_service_user }}'
 compose_repo_compose_file_path: 'docker-compose.yml'
+compose_repo_compose_additional_params: ''

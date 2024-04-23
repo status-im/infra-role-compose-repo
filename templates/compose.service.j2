@@ -12,7 +12,7 @@ Group=docker
 WorkingDirectory={{ compose_repo_path }}
 SyslogFacility=local6
 ExecStartPre=/usr/local/bin/docker-compose --file {{ compose_repo_compose_file_path }} pull
-ExecStart=/usr/local/bin/docker-compose --file {{ compose_repo_compose_file_path }} up --build
+ExecStart=/usr/local/bin/docker-compose --file {{ compose_repo_compose_file_path }} up --build {{ compose_repo_compose_additional_params }}
 ExecStopPost=/usr/local/bin/docker-compose --file {{ compose_repo_compose_file_path }} down
 Restart=on-failure
 Environment=COMPOSE_PROJECT_NAME={{ compose_repo_service_name }}
