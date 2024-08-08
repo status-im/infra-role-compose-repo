@@ -15,6 +15,11 @@ compose_repo_branch: 'master'
 compose_repo_webhook_secret: 'super-secret-webhook-secret'
 compose_repo_env_link_src: '{{ compose_repo_path }}/deploy.env'
 ```
+In case of a private repository an SSH key needs to be provided:
+```yaml
+compose_repo_url: 'git@github.com:example-org/service-abc.git
+compose_repo_ssh_key: '-----BEGIN OPENSSH PRIVATE KEY-----\n...'
+```
 The Docker images used are controlled by env variables defined in the `docker-compose.yml` in the source repo.
 Optionally images can be monitored and auto-updated using [Watchtower](https://github.com/containrrr/watchtower).
 To do that the `com.centurylinklabs.watchtower.enable` __label__ needs to be set to `true`.
