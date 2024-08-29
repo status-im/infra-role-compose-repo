@@ -8,13 +8,15 @@
 - name: Deploy GitHub Webhook handling service
   include_role: name=infra-role-github-webhook
   vars:
-    github_webhook_service_name: '{{ compose_repo_webhook_service_name }}'
-    github_webhook_service_user: '{{ compose_repo_service_user }}'
-    github_webhook_dest_path:    '{{ compose_repo_path }}'
-    github_webhook_repo_url:     '{{ compose_repo_url }}'
-    github_webhook_ssh_key:      '{{ compose_repo_ssh_key | default(omit) }}'
-    github_webhook_repo_branch:  '{{ compose_repo_branch }}'
-    github_webhook_port:         '{{ compose_repo_webhook_port }}'
-    github_webhook_secret:       '{{ compose_repo_webhook_secret | mandatory }}'
+    github_webhook_service_name:      '{{ compose_repo_webhook_service_name }}'
+    github_webhook_service_user:      '{{ compose_repo_service_user }}'
+    github_webhook_dest_path:         '{{ compose_repo_path }}'
+    github_webhook_repo_url:          '{{ compose_repo_url }}'
+    github_webhook_ssh_key:           '{{ compose_repo_ssh_key | default(omit) }}'
+    github_webhook_repo_branch:       '{{ compose_repo_branch }}'
+    github_webhook_port:              '{{ compose_repo_webhook_port }}'
+    github_webhook_secret:            '{{ compose_repo_webhook_secret | mandatory }}'
+    github_webhook_consul_meta:       '{{ compose_repo_webhook_meta }}'
+    github_webhook_consul_tags_extra: '{{ compose_repo_webhook_tags }}'
     github_webhook_post_command: |-
       /usr/bin/sudo systemctl restart {{ compose_repo_compose_service_name }}
