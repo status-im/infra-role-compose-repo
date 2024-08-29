@@ -10,6 +10,7 @@ compose_repo_path: '{{ compose_repo_service_path }}/repo'
 #compose_repo_ssh_key: '-----BEGIN OPENSSH PRIVATE KEY-----\n...'
 compose_repo_branch: 'master'
 #compose_repo_env_link_src: '{{ compose_repo_path }}/example.env'
+#compose_repo_env_file_contents: 'DB_NAME=db.example.org\n...'
 
 # Webhook service
 compose_repo_webhook_service_name: '{{ compose_repo_service_name }}-webhook'
