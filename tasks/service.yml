@@ -6,12 +6,14 @@
     dest:  '{{ compose_repo_path }}/.env'
     state: 'link'
 
-- name: Create .env symlink to custom env
+- name: Create .env file from provided content
   when: compose_repo_env_file_contents is defined
   copy:
     dest:    '{{ compose_repo_path }}/.env'
     owner:   '{{ compose_repo_service_user }}'
+    group:   '{{ compose_repo_service_group }}'
     content: '{{ compose_repo_env_file_contents }}'
+    mode:    '0770'
 
 - name: Create systemd Unit file
   template:

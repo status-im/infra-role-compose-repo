@@ -7,7 +7,7 @@
   file:
     path:  '{{ item }}'
     owner: '{{ compose_repo_service_user }}'
-    group: 'docker'
+    group: '{{ compose_repo_service_group }}'
     state: 'directory'
     mode:  0755
   with_items:

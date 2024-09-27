@@ -1,1 +1,2 @@
 {{ compose_repo_service_user }} ALL= NOPASSWD: /bin/systemctl restart {{ compose_repo_compose_service_name }}
+%{{ compose_repo_service_group }} ALL= NOPASSWD: /bin/systemctl restart {{ compose_repo_compose_service_name }}
