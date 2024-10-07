@@ -4,6 +4,11 @@ compose_repo_service_path: '/docker/{{ compose_repo_service_name }}'
 compose_repo_service_user: 'comprepo'
 compose_repo_service_group: 'adm'
 compose_repo_service_env_vars: {}
+# Restart options: no, always, on-success, on-failure, on-abnormal, on-abort, on-watchdog
+compose_repo_restart: 'on-failure'
+compose_repo_restart_delay: 30
+compose_repo_restart_retries: 3
+compose_repo_timeout_sec: 300
 
 # Simulator repository
 #compose_repo_url: 'https://github.com/example-org/some-service'

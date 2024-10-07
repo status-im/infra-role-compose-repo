@@ -5,6 +5,10 @@ Requires=network-online.target
 After=network-online.target
 After=docker.service
 After={{ compose_repo_webhook_service_name }}.service
+{% if compose_repo_restart != "no" %}
+StartLimitBurst={{ compose_repo_restart_retries }}
+StartLimitIntervalSec={{ (compose_repo_restart_retries|int * compose_repo_timeout_sec|int) + 60 }}
+{% endif %}
 
 [Service]
 User={{ compose_repo_compose_service_user }}
@@ -14,7 +18,11 @@ SyslogFacility=local6
 ExecStartPre=/usr/bin/docker compose --file {{ compose_repo_compose_file_path }} pull --ignore-buildable
 ExecStart=/usr/bin/docker compose --file {{ compose_repo_compose_file_path }} up --build
 ExecStopPost=/usr/bin/docker compose --file {{ compose_repo_compose_file_path }} down
-Restart=on-failure
+Restart={{ compose_repo_restart }}
+TimeoutStartSec={{ compose_repo_timeout_sec }}
+{% if compose_repo_restart != "no" %}
+RestartSec={{ compose_repo_restart_delay }}
+{% endif %}
 Environment=COMPOSE_PROJECT_NAME={{ compose_repo_service_name }}
 {% for key,value in compose_repo_service_env_vars.items() %}
 Environment={{ key }}={{ value }}
