@@ -18,6 +18,12 @@ compose_repo_branch: 'master'
 #compose_repo_env_link_src: '{{ compose_repo_path }}/example.env'
 #compose_repo_env_file_contents: 'DB_NAME=db.example.org\n...'
 
+# Docker Private Registries
+compose_repo_registries: []
+#   - url: 'docker.example.org'
+#     username: 'default'
+#     password: 'ChangeMeIfYouCare'
+
 # Webhook service
 compose_repo_webhook_service_name: '{{ compose_repo_service_name }}-webhook'
 compose_repo_webhook_port: 6060

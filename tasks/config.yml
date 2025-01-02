@@ -2,6 +2,18 @@
 - name: Create service user
   user:
     name: '{{ compose_repo_service_user }}'
+    groups: ['docker']
+
+- name: 'Login into Docker registries'
+  become_user: '{{ compose_repo_service_user }}'
+  docker_login:
+    registry_url: '{{ registry.url }}'
+    username:     '{{ registry.username }}'
+    password:     '{{ registry.password }}'
+  with_items: '{{ compose_repo_registries }}'
+  loop_control:
+    loop_var: 'registry'
+    label: '{{ registry.url }}'
 
 - name: Create service directories
   file:
