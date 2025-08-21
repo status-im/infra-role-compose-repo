@@ -18,5 +18,6 @@
     github_webhook_secret:            '{{ compose_repo_webhook_secret | mandatory }}'
     github_webhook_consul_meta:       '{{ compose_repo_webhook_meta }}'
     github_webhook_consul_tags_extra: '{{ compose_repo_webhook_tags }}'
+    github_webhook_create_user_and_group: '{{ compose_repo_create_user_and_group }}'
     github_webhook_post_command: |-
       /usr/bin/sudo systemctl restart {{ compose_repo_compose_service_name }}
