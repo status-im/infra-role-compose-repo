@@ -11,6 +11,11 @@ compose_repo_restart_delay: 30
 compose_repo_restart_retries: 3
 compose_repo_timeout_sec: 300
 
+# Random delay at start(useful when multiple instances in parallel)
+compose_repo_random_delay_enabled: false
+compose_repo_random_delay_min: 0
+compose_repo_random_delay_max: 60
+
 # Simulator repository
 #compose_repo_url: 'https://github.com/example-org/some-service'
 compose_repo_path: '{{ compose_repo_service_path }}/repo'

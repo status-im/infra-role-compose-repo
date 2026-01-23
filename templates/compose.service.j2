@@ -15,6 +15,9 @@ User={{ compose_repo_compose_service_user }}
 Group=docker
 WorkingDirectory={{ compose_repo_path }}
 SyslogFacility=local6
+{% if compose_repo_random_delay_enabled | default(false) %}
+ExecStartPre=/usr/bin/sh -c 'sleep $(( {{ compose_repo_random_delay_min }} + RANDOM % {{ (compose_repo_random_delay_max) - (compose_repo_random_delay_min) + 1 }} ))'
+{% endif %}
 ExecStartPre=/usr/bin/docker compose --file {{ compose_repo_compose_file_path }} pull --ignore-buildable
 ExecStart=/usr/bin/docker compose --file {{ compose_repo_compose_file_path }} up --build
 ExecStopPost=/usr/bin/docker compose --file {{ compose_repo_compose_file_path }} down
