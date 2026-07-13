@@ -9,6 +9,7 @@ compose_repo_service_env_vars: {}
 compose_repo_restart: 'on-failure'
 compose_repo_restart_delay: 30
 compose_repo_restart_retries: 3
+compose_repo_restart_interval_sec: '{{ (compose_repo_restart_retries|int * compose_repo_timeout_sec|int) + 60 }}'
 compose_repo_timeout_sec: 300
 
 # Random delay at start(useful when multiple instances in parallel)
